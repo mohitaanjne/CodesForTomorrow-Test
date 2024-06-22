@@ -8,8 +8,17 @@ import ListView from "./listView";
 
 const useStyles = makeStyles((theme) => ({
   containerFluid: {
-    width: "70%",
+    width: "66%",
     padding: "2.5rem",
+    minHeight: "100vh",
+    transition: "350ms, easeIn",
+  },
+  isActiveFeedback: {
+    "&$containerFluid": {
+      filter: "blur(6px)",
+      opacity: "0.5",
+      transition: "350ms, easeIn",
+    },
   },
   container: {
     display: "flex",
@@ -28,6 +37,7 @@ function MainContent() {
   const dispatch = useDispatch();
 
   const toggleState = useSelector((state) => state.toggle.toggle);
+  const isFeedback = useSelector((state) => state.toggle.isFeedback);
   const userData = useSelector((state) => state.fetchUserData.userData);
   // const loading = useSelector((state) => state.fetchUserData.loading);
   const error = useSelector((state) => state.fetchUserData.error);
@@ -53,7 +63,11 @@ function MainContent() {
   }, [dispatch]);
 
   return (
-    <div className={classes.containerFluid}>
+    <div
+      className={`${classes.containerFluid} ${
+        isFeedback && classes.isActiveFeedback
+      }`}
+    >
       <div className={classes.container}>
         {showLoading ? (
           <Typography variant="h4">Loading...</Typography>

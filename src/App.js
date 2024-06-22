@@ -7,8 +7,9 @@ import Sidebar from "./Components/sidebar";
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
-    // justifyContent: "space-between",
+    justifyContent: "flex-end",
     background: "#E4EAF0",
+    position: "relative",
   },
 }));
 

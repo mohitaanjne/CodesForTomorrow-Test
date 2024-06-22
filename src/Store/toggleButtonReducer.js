@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialToggleState = { toggle: "cardView" };
+const initialToggleState = { toggle: "cardView", isFeedback: false };
 
 const toggleSlice = createSlice({
   name: "toggleButton",
@@ -8,6 +8,9 @@ const toggleSlice = createSlice({
   reducers: {
     handleToggle(state, action) {
       state.toggle = action.payload;
+    },
+    handleToggleFeedback(state) {
+      state.isFeedback = !state.isFeedback;
     },
   },
 });
